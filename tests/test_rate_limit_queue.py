@@ -1,5 +1,7 @@
-from rate_limit_queue import RateLimitQueue
+from rate_limit_queue import RateLimitQueue, EmptyRateLimitQueue
 import time
+import pytest
+
 
 def test_rate_limit_queue_creation():
     r = RateLimitQueue(10, secs=10)
@@ -43,3 +45,9 @@ def test_get_items():
         r.get()
 
     assert 3 < time.time() - start_time < 4
+
+
+def test_empty_queue():
+    r = RateLimitQueue(3, secs=3)
+    with pytest.raises(EmptyRateLimitQueue):
+        r.get()
