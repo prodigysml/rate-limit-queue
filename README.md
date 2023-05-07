@@ -57,16 +57,16 @@ queue_of_my_fav_sites.put_list(list_of_my_fav_sites)
 
 ### Get
 
-After putting into the queue, retrieval is quite simple. Use the `put` method to retrieve the object in the same way you stored it.
+After putting into the queue, retrieval is quite simple. Use the `get` method to retrieve the object in the same way you stored it.
 
 ```python
 from rate_limit_queue import RateLimitQueue
 
 queue_of_my_fav_sites = RateLimitQueue(10, secs=10)
 
-queue_of_my_fav_sites.put("https://github.com")
+queue_of_my_fav_sites.put("https://github.com") # setting up the queue
 
-print(queue_of_my_fav_sites.get())
+print(queue_of_my_fav_sites.get()) # getting the item
 ```
 
 **Note: Should your queue run out of items, make sure you keep your eyes peeled for the `EmptyRateLimitQueue` exception**
