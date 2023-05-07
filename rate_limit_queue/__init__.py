@@ -5,6 +5,7 @@ import threading
 __version__ = "0.1.0"
 __author__ = 'Sajeeb Lohani'
 
+
 class RateLimitQueue:
     def __init__(self, num_calls, secs=0, mins=0, hours=0):
         self.time_period = secs + (mins * 60) + (hours * 3600)
