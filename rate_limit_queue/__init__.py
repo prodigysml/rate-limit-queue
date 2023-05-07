@@ -29,7 +29,7 @@ class RateLimitQueue:
         self.oldest_time = self.current_time - self.time_period
 
     def get(self):
-        if len(self.queue) == 0:
+        if self.queue.qsize() == 0:
             raise EmptyRateLimitQueue("The rate limit queue is empty", "RLQ-1")
         self._update_times()
 
