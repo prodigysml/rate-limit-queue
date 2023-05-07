@@ -1,5 +1,5 @@
 from rate_limit_queue import RateLimitQueue
-
+import time
 
 def test_rate_limit_queue_creation():
     r = RateLimitQueue(10, secs=10)
@@ -32,3 +32,14 @@ def test_put_items():
 
     for i in range(3):
         assert r.get() == i
+
+
+def test_get_items():
+    r = RateLimitQueue(3, secs=3)
+    r.put_list(list(range(5)))
+
+    start_time = time.time()
+    for _ in range(5):
+        r.get()
+
+    assert 3 < time.time() - start_time < 4
