@@ -12,6 +12,17 @@ Unit tests are performed using `pytest`. Install `pytest` using `pip`.
 
 This project is being maintained using the PEP8 standard. We are using `flake8` to ensure the standard is upheld.
 
+# Installation
+
+Since this package isn't on `pip` just yet, the easiest way to install it is by doing the following:
+```bash
+git clone https://github.com/prodigysml/rate-limit-queue.git # for SSH users: git@github.com:prodigysml/rate-limit-queue.git
+
+cd rate-limit-queue/
+
+pip install . # if you do not have pip3 aliased to pip, you may need to run pip3 instead of pip
+```
+
 # Usage
 
 ## Instantiation of the Queue
