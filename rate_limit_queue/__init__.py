@@ -29,6 +29,8 @@ class RateLimitQueue:
         self.oldest_time = self.current_time - self.time_period
 
     def get(self):
+        if len(self.queue) == 0:
+            raise EmptyRateLimitQueue("The rate limit queue is empty", "RLQ-1")
         self._update_times()
 
         with self.lock:
@@ -44,3 +46,9 @@ class RateLimitQueue:
             item = self.queue.get()
             self.call_times.append(self.current_time)
             return item
+
+
+class EmptyRateLimitQueue(Exception):
+    def __init__(self, message, code):
+        super().__init__(message)
+        self.code = code
